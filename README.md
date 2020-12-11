@@ -1,2 +1,2 @@
 # ADISchool
- web platform to ADI School managing
+Web platform to ADI School managing
