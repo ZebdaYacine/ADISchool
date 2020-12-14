@@ -31,13 +31,13 @@
                 </div>
                 <div class="col-md-6 mb-3">
             <h3 class="signin-text mb-3"> Sign In</h3>
-            <form action="">
+            <form action="loginController.php" method="POST">
                     <div class="form-group">
-                      <label for="email">Email</label>
-                      <input type="email" name="email" class="form-control">
+                      <label for="user">User Name</label>
+                      <input type="text" name="user" class="form-control">
                       <div class="form-group">
                           <label for="password">Password</label>
-                          <input type="passowrd" name="password" class="form-control">
+                          <input type="password" name="password" class="form-control">
                       </div>
                       <div class="form-group form-check">
                           <input type="checkbox" name="checkbox" class="form-check-input" id="checkbox">

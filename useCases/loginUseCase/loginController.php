@@ -4,7 +4,7 @@
  */
 //Connect to DB
 
-
+session_start();
 class Login {
 	protected $servername = "localhost";
 	protected $username = "root";
@@ -49,11 +49,12 @@ class Login {
       		$count = $stmt->rowCount();
       		$row   = $stmt->fetch(PDO::FETCH_ASSOC);
 		    if($count == 1 && !empty($row)) {
+		        
+		        $_SESSION['sess_user_id']   = $row['id'];
+		        $_SESSION['sess_user_name'] = $row['userName'];
+		        $_SESSION['sess_grade'] = $row['grade'];
 		       	return True ; 
 		        // /******************** Your code ***********************/
-		        // $_SESSION['sess_user_id']   = $row['uid'];
-		        // $_SESSION['sess_user_name'] = $row['username'];
-		        // $_SESSION['sess_name'] = $row['name'];
 		       
 		      } 
 		    else {
@@ -68,5 +69,19 @@ class Login {
 
 }
  $Login_ = new Login() ;
- 
+
+ if (isset($_GET["logout"])) {
+ 	$_SESSION['sess_user_id']   = "";
+	$_SESSION['sess_user_name'] = "";
+   	$_SESSION['sess_grade'] = "";
+ 	if( empty($_SESSION['sess_user_id'])) header('location:login.php');
+ }
+
+ if(isset($_POST['user']) && isset($_POST['password'])) {
+	
+	if($Login_->CheckUser($_POST['user'],$_POST['password'])) {
+ 	 header('location:../../index.php');
+
+	 }
+ }
  ?>
