@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if(isset($_SESSION['sess_user_id']) && $_SESSION['sess_user_id'] == "") {
+  header('location:useCases/loginUseCase/login.php');
+  
+} 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -214,7 +221,7 @@
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="#">Logout</a>
+                        <a class="btn btn-primary" href="useCases/loginUseCase/loginController.php?logout">Logout</a>
                     </div>
                 </div>
             </div>
