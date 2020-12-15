@@ -26,6 +26,10 @@ class Login {
 		}
 
 	}
+	public function Creat_Cookie()
+	{ //this is for adding cookie
+		$random_value = "randddd"; 
+	}
 	public function hash_pass($pwd) {
 
 		$pepper = "just rendome salt thing for making the hash harder ";
@@ -76,7 +80,7 @@ class Login {
    	$_SESSION['sess_grade'] = "";
  	if( empty($_SESSION['sess_user_id'])) header('location:login.php');
  }
-
+ //if you want to try login use blacko 1234
  if(isset($_POST['user']) && isset($_POST['password'])) {
 	
 	if($Login_->CheckUser($_POST['user'],$_POST['password'])) {
