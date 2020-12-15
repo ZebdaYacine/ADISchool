@@ -1,3 +1,11 @@
+<?php 
+include_once '../../modeles/db.php';
+include_once '../../modeles/lib.php';
+IsAuth(); 
+
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -174,11 +182,12 @@
                             </li>
                         </ul>
                     </nav>
-                    <form class="col-6 mt-5 ml-5" action="">
+                    <form class="col-6 mt-5 ml-5" action="formationController.php" method="POST">
                         <div class="form-group ">
                             <label for="FormationName">Formation Name </label>
-                            <input type="text" class="form-control" id="FormationName" aria-describedby="FormHelp">
+                            <input type="text" class="form-control" id="FormationName" aria-describedby="FormHelp" name="fname">
                             <small id="FormHelp" class="form-text text-muted">We'll choose the name of formation.</small>
+                            <input type="hidden" name="action" value="add">
                         </div>
                         <button type="submit" class="btn btn-primary">Add Formation</button>
                     </form>
@@ -192,24 +201,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                            
+                            
+                            
+                            <?php 
+                            //this for the output 
+                            $db = new db ;
+                            $list = $db->Get_Formation();
+                            $id = 1 ;
+                            
+                            foreach ($list as $formation) {
+                                echo "<tr>";
+                                echo "<th scope='row'>$id</th>";
+                                echo "<td>".$formation['trainingName']."</td>";
+                                
+                                echo "<td><form action=''><button id='btn_table' type='button' class='btn btn-outline-primary'>Modify</button>";
+                                echo "<button id='btn_table' type='button' class='btn btn-outline-danger'>Dell</button>";
+                                echo "<input type='hidden' name='id' value='".$formation['id']."'";
+                                    
+                                echo "</form></td>";
+                                echo "</tr>";
+                            $id++; 
+                            }
+                             ?>
+                             
                         </tbody>
                     </table>
                     <!-- End of Topbar -->

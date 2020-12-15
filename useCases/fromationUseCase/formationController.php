@@ -1,20 +1,20 @@
 <?php
 include_once '../../modeles/db.php';
-
+include_once '../../modeles/lib.php';
 
 
 class formation
 {
-	protected db = new db();
+
+	protected $db ; 
 	
-	public function addformation($F_Name) {
-		if(isset($_POST['action']) && isset($_POST['fname'])){
-			
-			if($_POST['action']=="add") {
+	public function addformation() {
+		if(isset($_POST['fname'])){
 				// for prevent xss 
-				$name = htmlspecialchars($F_Name);
+				$this->db = new db;
+				$name = htmlspecialchars($_POST['fname']);
 				$this->db->Add_Fomation($name);
-		}
+				header("Location:formation.php");
 	}
 	
 
@@ -22,6 +22,16 @@ class formation
 }
 
 
+if (IsAuth()) {
+
+	if(isset($_POST['action'])){
+		$FM = new formation() ; 
+		if($_POST['action'] == 'add') $FM->addformation() ; 
 
 
+	}
+
+
+}
+else header('location:../loginUseCase/login.php');
 ?>

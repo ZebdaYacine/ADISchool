@@ -1,7 +1,7 @@
 <?php
 
 
-include_once '../config/localArg.php';
+include_once '../../config/localArg.php';
 
 class db {
 	protected $servername = "";
@@ -38,6 +38,12 @@ class db {
     	$query = "INSERT INTO `training`(`trainingName`) VALUES (?)";
     	$stmt = $this->conn->prepare($query);
     	$stmt->execute([$f_name]);
+
+    }
+    function Get_Formation(){
+    	$query = "SELECT * FROM `training`";
+    	$stmt = $this->conn->query($query);
+    	return $stmt->fetchAll();
 
     }
 
