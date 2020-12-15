@@ -15,19 +15,22 @@ class Login {
     protected $password = "";
     protected $dbname = "";
 
-<<<<<<< HEAD
-	}
+	
 	public function Creat_Cookie()
 	{ //this is for adding cookie
 		$random_value = "randddd"; 
 	}
-	public function hash_pass($pwd) {
-=======
+
     function __construct() {
-        $this->servername = localArg::$server_name;
-        $this->username = localArg::$user_name;
-        $this->password = localArg::$password;
-        $this->dbname = localArg::$db_name;
+    	global $server_name;
+    	global $user_name ; 
+    	global $password ; 
+    	global $db_name;
+        
+        $this->servername = $server_name;
+        $this->username = $user_name;
+        $this->password = $password;
+        $this->dbname = $db_name;
         try {
             $this->conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             // set the PDO error mode to exception
@@ -38,7 +41,7 @@ class Login {
             exit;
         }
     }
->>>>>>> e617c5e50c33d678dedcf3b2b16a21f6d2178baf
+
 
     public function hash_pass($pwd) {
 
@@ -77,19 +80,7 @@ class Login {
 
 }
 
-<<<<<<< HEAD
- if (isset($_GET["logout"])) {
- 	$_SESSION['sess_user_id']   = "";
-	$_SESSION['sess_user_name'] = "";
-   	$_SESSION['sess_grade'] = "";
- 	if( empty($_SESSION['sess_user_id'])) header('location:login.php');
- }
- //if you want to try login use blacko 1234
- if(isset($_POST['user']) && isset($_POST['password'])) {
-	
-	if($Login_->CheckUser($_POST['user'],$_POST['password'])) {
- 	 header('location:../../index.php');
-=======
+
 $Login_ = new Login();
 
 if (isset($_GET["logout"])) {
@@ -100,7 +91,6 @@ if (isset($_GET["logout"])) {
         header('location:login.php');
 }
 if (isset($_POST['user']) && isset($_POST['password'])) {
->>>>>>> e617c5e50c33d678dedcf3b2b16a21f6d2178baf
 
     if ($Login_->CheckUser($_POST['user'], $_POST['password'])) {
         header('location:../../index.php');
