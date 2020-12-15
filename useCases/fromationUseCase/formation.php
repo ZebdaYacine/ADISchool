@@ -174,13 +174,13 @@
                             </li>
                         </ul>
                     </nav>
-                    <form class="col-6 mt-5 ml-5">
+                    <form class="col-6 mt-5 ml-5" action="">
                         <div class="form-group ">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            <label for="FormationName">Formation Name </label>
+                            <input type="text" class="form-control" id="FormationName" aria-describedby="FormHelp">
+                            <small id="FormHelp" class="form-text text-muted">We'll choose the name of formation.</small>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Add Formation</button>
                     </form>
                     <table class="table mt-5 mx-5 col-10">
                         <thead>
