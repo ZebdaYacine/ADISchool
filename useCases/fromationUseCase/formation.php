@@ -1,20 +1,13 @@
-<?php
-session_start();
-if (isset($_SESSION['sess_user_id']) && $_SESSION['sess_user_id'] == "") {
-    header('location:useCases/loginUseCase/login.php');
-}
-header('location:useCases\statisticsUseCase\statics.php');
-?>
 <!DOCTYPE html>
 <html lang="en">
 
     <head>
-        <link rel="stylesheet" href="..\ADISchool\bootstrap-5.0.0-beta1-dist\css\bootstrap.min.css">
+        <link rel="stylesheet" href="../../bootstrap-5.0.0-beta1-dist/css/bootstrap-grid.min.css">
+
         <!-- Optional theme -->
-        <link rel="stylesheet" href="..\ADISchool\bootstrap-5.0.0-beta1-dist\css\bootstrap-theme.min.css">
-        <link rel="stylesheet" href="..\ADISchool\styles\style.css">
+        <link rel="stylesheet" href="../../bootstrap-theme.min.css">
         <!-- Latest compiled and minified JavaScript -->
-        <script src="..\ADISchool\bootstrap-5.0.0-beta1-dist\js\bootstrap.min.js"></script>
+        <script src="../../bootstrap-5.0.0-beta1-dist/js/bootstrap.min.js"></script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,12 +15,11 @@ header('location:useCases\statisticsUseCase\statics.php');
         <meta name="author" content="">
         <title>ADISchoole</title>
         <!-- Custom fonts for this template-->
-        <link href="../startbootstrap-sb-admin-2-gh-pages/css/font.css" rel="stylesheet">
         <link rel="apple-touch-icon" sizes="76x76" href="../ADISchool/img/ADI_logo.png">
-        <link rel="icon" type="image/png"  href="../ADISchool/img/ADI_logo.png">
+        <link rel="icon" type="image/png" href="../ADISchool/img/ADI_logo.png">
         <!-- Custom styles for this template-->
-        <link href="css/sb-admin-2.min.css" rel="stylesheet">
-        <link href="fontawesome-free-5.15.1-web/css/all.css" rel="stylesheet" type="text/css">
+        <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
+        <link href="../../fontawesome-free-5.15.1-web/css/all.css" rel="stylesheet" type="text/css">
     </head>
 
     <body id="page-top">
@@ -40,7 +32,7 @@ header('location:useCases\statisticsUseCase\statics.php');
                 <!-- Sidebar - Brand -->
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                     <div class="sidebar-brand-icon rotate-n-15">
-                        <img src="img/ADI_logo.png" alt="Avatar" width="50" height="50" style="border-radius: 50%;">
+                        <img src="../../img/ADI_logo.png" alt="Avatar" width="50" height="50" style="border-radius: 50%;">
                     </div>
                     <div class="sidebar-brand-text mx-3"> ADISchool </div>
                 </a>
@@ -50,7 +42,7 @@ header('location:useCases\statisticsUseCase\statics.php');
 
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item active">
-                    <a class="nav-link" href="useCases\statisticsUseCase\statics.php">
+                    <a class="nav-link" href="../statisticsUseCase/statics.php">
                         <i class="fas fa-chart-line"></i>
                         <span>Statistiques</span>
                     </a>
@@ -66,21 +58,21 @@ header('location:useCases\statisticsUseCase\statics.php');
 
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <a class="nav-link collapsed" href="#" >
                         <i class="fas fa-sitemap"></i>
                         <span>Formations</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <a class="nav-link collapsed" href="#" >
                         <i class="fas fa-layer-group"></i>
                         <span>Niveaux</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <a class="nav-link collapsed" href="#" >
                         <i class="fas fa-hiking"></i>
                         <span>Categories</span>
                     </a>
@@ -90,28 +82,28 @@ header('location:useCases\statisticsUseCase\statics.php');
 
                 <!-- Nav Item - Utilities Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                    <a class="nav-link collapsed" href="#" >
                         <i class="fas fa-book"></i>
                         <span>Inscriptions</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                    <a class="nav-link collapsed" href="#" >
                         <i class="fas fa-clock"></i>
                         <span>Seances</span>
                     </a>
                 </li>
                 <hr class="sidebar-divider">
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                    <a class="nav-link collapsed" href="#" >
                         <i class="fas fa-users"></i>
                         <span>Utilisateurs</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                    <a class="nav-link collapsed" href="#" >
                         <i class="fas fa-user-graduate"></i>
                         <span>Etudiants</span>
                     </a>
@@ -119,7 +111,7 @@ header('location:useCases\statisticsUseCase\statics.php');
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block">
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                    <a class="nav-link collapsed" href="#" >
                         <i class="fas fa-money-check-alt"></i>
                         <span>Paiement</span>
                     </a>
@@ -165,7 +157,7 @@ header('location:useCases\statisticsUseCase\statics.php');
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                    <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                                    <img class="img-profile rounded-circle" src="../../img/undraw_profile.svg">
                                 </a>
                                 <!-- Dropdown - User Information -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -180,10 +172,46 @@ header('location:useCases\statisticsUseCase\statics.php');
                                     </a>
                                 </div>
                             </li>
-
                         </ul>
-
                     </nav>
+                    <form class="col-6 mt-5 ml-5">
+                        <div class="form-group ">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    <table class="table mt-5 mx-5 col-10">
+                        <thead>
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">formation</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <!-- End of Topbar -->
                 </div>
                 <!-- End of Main Content -->
@@ -222,7 +250,7 @@ header('location:useCases\statisticsUseCase\statics.php');
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="useCases/loginUseCase/loginController.php?logout">Logout</a>
+                        <a class="btn btn-primary" href="#">Logout</a>
                     </div>
                 </div>
             </div>

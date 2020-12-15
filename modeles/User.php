@@ -7,8 +7,8 @@
  */
 
 class User {
-    $username="";
-    $password="";
+    //$username="";
+    //$password="";
     
 }
 
