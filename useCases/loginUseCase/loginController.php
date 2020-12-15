@@ -4,17 +4,22 @@
  * 
  */
 //Connect to DB
-
 session_start();
+
+include_once '../../config/localArg.php';
 
 class Login {
 
-    protected $servername = "localhost";
-    protected $username = "root";
-    protected $password = "0658185867";
-    protected $dbname = "ADI";
+    protected $servername = "";
+    protected $username = "";
+    protected $password = "";
+    protected $dbname = "";
 
     function __construct() {
+        $this->servername = localArg::$server_name;
+        $this->username = localArg::$user_name;
+        $this->password = localArg::$password;
+        $this->dbname = localArg::$db_name;
         try {
             $this->conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             // set the PDO error mode to exception
