@@ -2,8 +2,6 @@
 include_once '../../modeles/db.php';
 include_once '../../modeles/lib.php';
 IsAuth(); 
-
-
  ?>
 
 <!DOCTYPE html>
@@ -28,6 +26,7 @@ IsAuth();
         <!-- Custom styles for this template-->
         <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
         <link href="../../fontawesome-free-5.15.1-web/css/all.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="../../css/main.css">
     </head>
 
     <body id="page-top">
@@ -212,14 +211,14 @@ IsAuth();
                             
                             foreach ($list as $formation) {
                                 echo "<tr>";
-                                echo "<th scope='row'>$id</th>";
-                                echo "<td>".$formation['trainingName']."</td>";
+                                echo "<th scope='row' class='align-middle'>$id</th>";
+                                echo "<td class='align-middle'>".$formation['trainingName']."</td>";
                                 
-                                echo "<td><form action=''><button id='btn_table' type='button' class='btn btn-outline-primary'>Modify</button>";
+                                echo "<td><form action='' id='formtest'>";
                                 echo "<button id='btn_table' type='button' class='btn btn-outline-danger'>Dell</button>";
-                                echo "<input type='hidden' name='id' value='".$formation['id']."'";
+                                echo "<input type='hidden' name='id' value='".$formation['id']."' >";
                                     
-                                echo "</form></td>";
+                                echo "</form><button  type='button' class='btn btn-outline-primary' id='modify-btn'>Modify</button></td>";
                                 echo "</tr>";
                             $id++; 
                             }

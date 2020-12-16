@@ -15,10 +15,19 @@ class formation
 				$name = htmlspecialchars($_POST['fname']);
 				$this->db->Add_Fomation($name);
 				header("Location:formation.php");
-	}
+						}
 	
 
+			}
+
+
+	public function dellformation() {
+		if(isset($_POST['id'])) {
+
+
+		}
 	}
+
 }
 
 
@@ -27,9 +36,9 @@ if (IsAuth()) {
 	if(isset($_POST['action'])){
 		$FM = new formation() ; 
 		if($_POST['action'] == 'add') $FM->addformation() ; 
+		elseif($_POST['action'] == 'dell') $FM->dellformation() ; 
 
-
-	}
+	} 
 
 
 }
