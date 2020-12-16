@@ -56,6 +56,15 @@ class db {
         $stmt->execute([$id]);                
     
     }
+
+    function Mod_Formation($id,$F_name) {
+       
+        $query = "UPDATE `training` SET `trainingName`=? WHERE `id`=?";        
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->execute([$F_name,$id]);                
+    
+    }
 }
 
 //this is just for testing the db class make sure to remove them 

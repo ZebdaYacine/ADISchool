@@ -2,14 +2,22 @@
 
 
 	/*margin-right:2rem;*/ 
-	padding-right: 2rem;
+	/*padding-right: 2rem*/;
 	float:left ;
 	margin-left: 1rem;
 	margin-top:0.1rem;
+	
 } 
 
 #modify-btn {
 	float:left ; 
 	margin-left: 1rem;
 	margin-top:0.1rem;	
+}
+
+
+#FormationVal {
+	color: red !important;
+
+
 }

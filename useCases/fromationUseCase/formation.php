@@ -214,12 +214,12 @@ IsAuth();
                                 echo "<th scope='row' class='align-middle'>$id</th>";
                                 echo "<td class='align-middle'>".$formation['trainingName']."</td>";
                                 
-                                echo "<td><form action='formationController.php' id='formtest' method='POST'>";
-                                echo "<input type='hidden' name='ID' value='".$formation['id']."' >";
-                                echo "<input type='hidden' name='action' value='dell'>";
-                                echo "<button id='btn_table' type='submit' class='btn btn-outline-danger'>Dell</button>";
+                                echo "<td>";
+                                $F_name = $formation['trainingName'];
+                                $F_id=$formation['id'];
+                                echo "<button type='button' class='btn btn-outline-danger' id='btn_table' data-toggle='modal' data-target='#ConfirmModal' onclick='Prepare_Del(\"$F_id\",\"$F_name\")'>Supprimer</button>";
                                 
-                                echo "</form><button  type='button' class='btn btn-outline-primary' id='modify-btn'>Modify</button></td>";
+                                echo "<button  type='button' class='btn btn-outline-primary' data-toggle='modal' data-target='#ModForModal' id='modify-btn' onclick='Prepare_Modify(\"$F_id\",\"$F_name\")'>Modify</button></td>";
                                 echo "</tr>";
                             $id++; 
                             }
@@ -251,6 +251,68 @@ IsAuth();
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
         </a>
+        <!-- Modify Modal -->
+        
+
+        <div class="modal fade" id="ModForModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">modifier la formation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                
+              <form action="formationController.php" method="POST" id='ModForm'>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-5 col-form-label">Nom de La Formation</label>
+                        <div class="col-sm-7">
+                          <input type="text" class="form-control" name="F_name" id="ModFname">
+                        </div>
+                      </div>
+                    
+                    <input type="hidden" name="ID" value="-1" id="ModId">
+                    <input type="hidden" name="action" value="modify">
+              </form>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                <button type="submit" class="btn btn-primary" onclick="Submit_me('ModForm')">Modifier</button>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Confirm dell Modal -->
+        
+
+        <div class="modal fade" id="ConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Confirmer La Suppression</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                êtes-vous sûr de vouloir supprimer la formation <span id="FormationVal" class="text-danger"></span>               
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+                <form action="formationController.php" method="POST">
+                    <input type="hidden" name="action" value="dell">
+                    <input type="hidden" name="ID" value="-1" id="IdFormation">
+                    <button type="submit" class="btn btn-primary">Oui</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- Logout Modal-->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -270,23 +332,24 @@ IsAuth();
                 </div>
             </div>
         </div>
-
+        <!-- Main js  -->
+        <script type="text/javascript" src="../../js/main.js"></script>
         <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../../vendor/jquery/jquery.min.js"></script>
+        <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
         <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
 
         <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin-2.min.js"></script>
+        <script src="../../js/sb-admin-2.min.js"></script>
 
         <!-- Page level plugins -->
-        <script src="vendor/chart.js/Chart.min.js"></script>
+        <script src="../../vendor/chart.js/Chart.min.js"></script>
 
         <!-- Page level custom scripts -->
-        <script src="js/demo/chart-area-demo.js"></script>
-        <script src="js/demo/chart-pie-demo.js"></script>
+        <script src="../../js/demo/chart-area-demo.js"></script>
+        <script src="../../js/demo/chart-pie-demo.js"></script>
 
     </body>
 
