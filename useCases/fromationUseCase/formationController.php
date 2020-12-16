@@ -7,11 +7,14 @@ class formation
 {
 
 	protected $db ; 
-	
+	function __construct()
+	{
+		$this->db = new db;
+	}
 	public function addformation() {
 		if(isset($_POST['fname'])){
 				// for prevent xss 
-				$this->db = new db;
+				#$this->db = new db;
 				$name = htmlspecialchars($_POST['fname']);
 				$this->db->Add_Fomation($name);
 				header("Location:formation.php");
@@ -22,8 +25,12 @@ class formation
 
 
 	public function dellformation() {
-		if(isset($_POST['id'])) {
-
+		if(isset($_POST['ID'])) {
+			$id =intval($_POST['ID']);
+			
+			$this->db->Del_Formation($id);
+			
+			header("Location:formation.php");
 
 		}
 	}
@@ -35,9 +42,10 @@ if (IsAuth()) {
 
 	if(isset($_POST['action'])){
 		$FM = new formation() ; 
-		if($_POST['action'] == 'add') $FM->addformation() ; 
-		elseif($_POST['action'] == 'dell') $FM->dellformation() ; 
 
+		
+		if(IsPrivileged($_POST['action'] == 'add')) $FM->addformation() ; 
+		elseif(IsPrivileged($_POST['action']) == 'dell') $FM->dellformation() ; 
 	} 
 
 

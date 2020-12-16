@@ -214,10 +214,11 @@ IsAuth();
                                 echo "<th scope='row' class='align-middle'>$id</th>";
                                 echo "<td class='align-middle'>".$formation['trainingName']."</td>";
                                 
-                                echo "<td><form action='' id='formtest'>";
-                                echo "<button id='btn_table' type='button' class='btn btn-outline-danger'>Dell</button>";
-                                echo "<input type='hidden' name='id' value='".$formation['id']."' >";
-                                    
+                                echo "<td><form action='formationController.php' id='formtest' method='POST'>";
+                                echo "<input type='hidden' name='ID' value='".$formation['id']."' >";
+                                echo "<input type='hidden' name='action' value='dell'>";
+                                echo "<button id='btn_table' type='submit' class='btn btn-outline-danger'>Dell</button>";
+                                
                                 echo "</form><button  type='button' class='btn btn-outline-primary' id='modify-btn'>Modify</button></td>";
                                 echo "</tr>";
                             $id++; 

@@ -41,12 +41,21 @@ class db {
 
     }
     function Get_Formation(){
-    	$query = "SELECT * FROM `training`";
+    	$query = "SELECT * FROM `training` ORDER BY id";
     	$stmt = $this->conn->query($query);
     	return $stmt->fetchAll();
 
     }
+    
+    
+    function Del_Formation($id) {
+       
+        $query = "DELETE FROM `training` WHERE id = ?";        
+        $stmt = $this->conn->prepare($query);
 
+        $stmt->execute([$id]);                
+    
+    }
 }
 
 //this is just for testing the db class make sure to remove them 
