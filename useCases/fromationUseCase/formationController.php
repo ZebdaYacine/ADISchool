@@ -59,9 +59,13 @@ if (IsAuth()) {
 		if(IsPrivileged($_POST['action'] == 'add')) $FM->addformation() ; 
 		elseif(IsPrivileged($_POST['action']) == 'dell') $FM->dellformation() ; 
 		elseif(IsPrivileged($_POST['action']) == 'modify' ) $FM->modformation();
-	} 
+		
+
+	} else header('location:../../index.php'); 
 
 
 }
 else header('location:../loginUseCase/login.php');
 ?>
+
+
