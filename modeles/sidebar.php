@@ -40,14 +40,14 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="<?php echo $GlobalPath ?>/useCases/niveaux.php" >
+                    <a class="nav-link collapsed" href="<?php echo $GlobalPath ?>/useCases/niveauxUseCase/niveaux.php" >
                         <i class="fas fa-layer-group"></i>
                         <span>Niveaux</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="<?php echo $GlobalPath ?>/useCases/categories/UseCase/categories.php" >
+                    <a class="nav-link collapsed" href="<?php echo $GlobalPath ?>/useCases/categoriesUseCase/categories.php" >
                         <i class="fas fa-hiking"></i>
                         <span>Categories</span>
                     </a>
