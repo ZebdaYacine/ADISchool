@@ -20,6 +20,7 @@ IsAuth();
         <div id="wrapper">
 
             <!-- Sidebar -->
+
             <?php include_once $GlobalPath."/modeles/sidebar.php"; ?>
           
             <!-- End of Sidebar -->
@@ -29,6 +30,7 @@ IsAuth();
 
                 <!-- Main Content -->
                 <div id="content">
+
 
                     <!-- Topbar -->
                     
@@ -83,8 +85,8 @@ IsAuth();
                     <!-- End of Topbar -->
                 </div>
                 <!-- End of Main Content -->
-
                 <!-- Footer -->
+
                 <?php include_once $GlobalPath."/modeles/footer.php";  ?>
                 <!-- End of Footer -->
 
@@ -111,9 +113,7 @@ IsAuth();
         ?>
 
         
-       
-        
-
+      
     </body>
 
 </html>
