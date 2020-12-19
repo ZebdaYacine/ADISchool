@@ -1,19 +1,18 @@
 <?php
 
+
+
 include_once '../../config/localArg.php';
 
 class db {
-
-    protected $servername = "";
-    protected $username = "";
-    protected $password = "";
-    protected $dbname = "";
-
+	 
     function __construct() {
         $this->servername = localArg::$server_name;
         $this->username = localArg::$user_name;
         $this->password = localArg::$password;
         $this->dbname = localArg::$db_name;
+    }
+
         try {
             $this->conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             // set the PDO error mode to exception
@@ -23,7 +22,6 @@ class db {
             // and if this fails there is no point continuing so add an exit
             exit;
         }
-    }
 
     function Add_Fomation($f_name) {
         $query = "INSERT INTO `training`(`trainingName`) VALUES (?)";
@@ -67,4 +65,5 @@ class db {
 // $db = new db() ; 
 // $db->Add_Fomation("juset testing !!");
 //comment me or delete me after you finish
+
 ?>

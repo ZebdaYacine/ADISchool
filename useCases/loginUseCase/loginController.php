@@ -15,11 +15,22 @@ class Login {
     protected $password = "";
     protected $dbname = "";
 
+	
+	public function Creat_Cookie()
+	{ //this is for adding cookie
+		$random_value = "randddd"; 
+	}
+
     function __construct() {
-        $this->servername = localArg::$server_name;
-        $this->username = localArg::$user_name;
-        $this->password = localArg::$password;
-        $this->dbname = localArg::$db_name;
+    	global $server_name;
+    	global $user_name ; 
+    	global $password ; 
+    	global $db_name;
+        
+        $this->servername = $server_name;
+        $this->username = $user_name;
+        $this->password = $password;
+        $this->dbname = $db_name;
         try {
             $this->conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             // set the PDO error mode to exception
@@ -30,6 +41,7 @@ class Login {
             exit;
         }
     }
+
 
     public function hash_pass($pwd) {
 
@@ -67,6 +79,7 @@ class Login {
     }
 
 }
+
 
 $Login_ = new Login();
 
