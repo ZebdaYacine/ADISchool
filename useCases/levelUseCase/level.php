@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+//echo $_GET['opt'];
+?>
 <html lang="en">
 
     <head>
@@ -20,6 +23,9 @@
         <!-- Custom styles for this template-->
         <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
         <link href="../../fontawesome-free-5.15.1-web/css/all.css" rel="stylesheet" type="text/css">
+        <script src="../../js/jquery.js"></script>  
+
+
     </head>
 
     <body id="page-top">
@@ -36,67 +42,31 @@
                 <!-- Main Content -->
                 <div id="content">
                     <?php include '../navBar.php'; ?>
-                    <div class="row">
-                        <h3 class="display-6 col-12 text-center">Statistiques</h3>
-                        <select name="cars" class="form-control col-6 offset-3 mt-3 mb-5">
-                            <option value="volvo">month</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
-                        </select>
+                    <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 ml-5 mr-5">
+                        <h2 class="h2 my-0 me-md-auto fw-normal">Niveaxu</h2>
+                        <input type="text" class="mr-5 ml-5 mt-1 mb-1 form-control" placeholder="search">  
+                        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                                data-bs-target="#insertModale">ajouter</button>
+                    </header>
+                    <label id="error" class="h4 d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 ml-5 mr-5 text-danger">
+
+                    </label>
+                    <div class="table-responsive mx-sm-0 mx-md-5 mx-lg-5 col-md-11 col-lg-11 col-sm-12">
+                        <table class="table table-striped table-sm" >
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Niveau</th>
+                                    <th>nomber de seances</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="leveles">
+
+                            </tbody>
+                        </table>
                     </div>
-
-                    <div class="container">
-                        <div class="card-deck mb-3 text-center">
-                            <div class="card mb-4 shadow-sm">
-                                <div class="card-header">
-                                    <h4 class="my-0 font-weight-normal">frainçais</h4>
-                                </div>
-                                <div class="card-body">
-                                    <h1 class="card-title pricing-card-title">8500 <small class="text-muted">DA</small></h1>
-                                    <ul class="list-unstyled mt-3 mb-4">
-                                        <li>10 Etudiants inscrits</li>
-                                        <li>5 Etudiants engages</li>
-                                        <li>0 Etudiants abandonnés</li>
-                                    </ul>
-                                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">details</button>
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 shadow-sm">
-                                <div class="card-header">
-                                    <h4 class="my-0 font-weight-normal">frainçais</h4>
-                                </div>
-                                <div class="card-body">
-                                    <h1 class="card-title pricing-card-title">8500 <small class="text-muted">DA</small></h1>
-                                    <ul class="list-unstyled mt-3 mb-4">
-                                        <li>10 Etudiants inscrits</li>
-                                        <li>5 Etudiants engages</li>
-                                        <li>0 Etudiants abandonnés</li>
-                                    </ul>
-                                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">details</button>
-                                </div>
-                            </div>
-                            <div class="card mb-4 shadow-sm">
-                                <div class="card-header">
-                                    <h4 class="my-0 font-weight-normal">frainçais</h4>
-                                </div>
-                                <div class="card-body">
-                                    <h1 class="card-title pricing-card-title">8500 <small class="text-muted">DA</small></h1>
-                                    <ul class="list-unstyled mt-3 mb-4">
-                                        <li>10 Etudiants inscrits</li>
-                                        <li>5 Etudiants engages</li>
-                                        <li>0 Etudiants abandonnés</li>
-                                    </ul>
-                                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">details</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- End of Topbar -->
                 </div>
                 <!-- End of Main Content -->
                 <?php include '../footer.php'; ?>
@@ -118,7 +88,7 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
+                            <i class="fas fa-times"></i>
                         </button>
                     </div>
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
@@ -130,6 +100,82 @@
             </div>
         </div>
 
+        <div class="modal fade" id="insertModale" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <form method="post" id="insert_form">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">neveau Niveau</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Niveau</label>
+                                <input type="text" id="name" name="name" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">nombre de seances</label>
+                                <input type="text" id="nbr" name="nbr" class="form-control">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Annuler</button>
+                            <input type="submit"  class="btn btn-outline-success " name="insert" id="insert" value="Ajouter"/>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                $('#insert_form').on("submit", function (event) {
+                    event.preventDefault();
+                    if ($('#name').val() == "")
+                    {
+                        alert("nom de  niveau est recommandées");
+                    } else
+                    if ($('#nbr').val() == "")
+                    {
+                        alert("nomber de seances  est recommandées ");
+                    } else
+                    {
+                        $.ajax({
+                            url: "levelUseCase.php",
+                            method: "POST",
+                            dataType: 'json',
+                            cache: false,
+                            data: $('#insert_form').serialize(),
+                            beforeSend: function () {
+                                $('#insert').val("Ajoute...");
+                            },
+                            success: function (data) {
+                                $('#insert_form')[0].reset();
+                                $('#insertModale').modal('hide');
+                                $('#error').html(data.error);
+                                $('#leveles').html(data.levels);
+                            }
+                        });
+                    }
+                });
+            });
+            $(document).ready(function () {
+                load_data();
+                function load_data()
+                {
+                    var action = "Load";
+                    $.ajax({
+                        url: "levelUseCase.php",
+                        method: "GET",
+                        data: {action: action},
+                        success: function (data)
+                        {
+                            $('#leveles').html(data);
+                        }
+                    });
+                }
+            });
+        </script>
         <!-- Bootstrap core JavaScript-->
         <script src="../../vendor/jquery/jquery.min.js"></script>
         <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -146,7 +192,6 @@
         <!-- Page level custom scripts -->
         <script src="../../js/demo/chart-area-demo.js"></script>
         <script src="../../js/demo/chart-pie-demo.js"></script>
-
     </body>
 
 </html>
