@@ -40,7 +40,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="<?php echo $GlobalPath ?>/useCases/niveauxUseCase/niveaux.php" >
+                    <a class="nav-link collapsed" href="<?php echo $GlobalPath ?>/useCases/levelUseCase/level.php" >
                         <i class="fas fa-layer-group"></i>
                         <span>Niveaux</span>
                     </a>

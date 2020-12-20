@@ -1,6 +1,7 @@
 <?php
 
 include '../../modeles/db.php';
+include '../../modeles/lib.php';
 
 class level {
 
@@ -40,11 +41,29 @@ class level {
                 if ($this->check_Validity_Data($_POST['nbr'], "INTEGER")) {
                     $this->db->Add_level($_POST['name'], $_POST['nbr']);
                 } else {
-                    return $this->error;
+                    $error = $this->error;
                 }
             } else {
-                return $this->error;
+                $error = $this->error;
             }
+        }
+    }
+
+    public function dell_level() {
+        if (isset($_POST['ID'])) {
+            $id = intval($_POST['ID']);
+            $this->db->Del_Level($id);
+            header("Location:level.php");
+        }
+    }
+
+    public function update_level() {
+        if (isset($_POST['ID']) && isset($_POST['nbr_name']) && isset($_POST['L_name'])) {
+            $name = htmlspecialchars($_POST['L_name']);
+            $nbr = htmlspecialchars($_POST['nbr_name']);
+            $id = intval($_POST['ID']);
+            $this->db->Updat_Level($id, $name, $nbr);
+            header("Location:level.php");
         }
     }
 
@@ -52,13 +71,20 @@ class level {
         $output = "";
         $list = $this->db->Get_levels();
         foreach ($list as $level) {
-            $i=$level['id'];
+            $id = $level['id'];
+            $name = $level['levelName'];
+            $nbr = $level['nbrSession'];
             $output .= "<tr>
                         <td>" . $level['id'] . "</td>
                         <td>" . $level['levelName'] . " </td>
                         <td>" . $level['nbrSession'] . "</td>
-                        <td><a href='levelUseCase.php?id=$i&action=update'>update</a></td>
-                        <td><a href='levelUseCase.php?id=$i&action=delete'>delete</a></td>
+                        <td>" . $level['nbrSession'] . "</td>
+                        <td>
+                          <a href='' id = 'btn_table' data-toggle = 'modal' data-target = '#ConfirmModal' onclick = 'Prepare_Del(\"$id\",\"$name\")'>
+                                  <i title='delete' class='fas fa-trash-alt'></i></a>
+                          <a href=''  data-toggle = 'modal' data-target = '#ModForModal' id = 'modify-btn' onclick ='Prepare_Modify_Level(\"$id\",\"$name\",\"$nbr\")'>"
+                    . "<i title='edit' class='fas fa-edit'></i></a>"
+                    . "</td >
                     </tr>";
         }
         return $output;
@@ -70,26 +96,20 @@ class level {
 
 }
 
-$obj = new level();
-if (isset($_GET["action"])) {
-    switch ($_GET['action']) {
-        case 'Load': {
-                echo $obj->get_data_in_table();
-                break;
-            }
-        case 'delete': {
-                header("Location: level.php");
-                break;
-            }
-        case 'update': {
-                header("Location: level.php");
-                break;
-            }
+if (IsAuth()) {
+    if (isset($_POST['action'])) {
+        $obj = new level();
+        if ($_POST['action'] == 'add') {
+            $obj->add_levele();
+            echo json_encode(
+                    array("error" => $obj->get_error(),
+                        "levels" => $obj->get_data_in_table()));
+        } elseif (IsPrivileged($_POST['action'] == 'dell')) {
+            $obj->dell_level();
+        } elseif (IsPrivileged($_POST['action'] == 'modify')) {
+            $obj->update_level();
+        }
     }
-} else {
-    $obj->add_levele();
-    echo json_encode(
-            array("error" => $obj->get_error(),
-                "levels" => $obj->get_data_in_table()));
+
 }
 ?>
