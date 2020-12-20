@@ -61,6 +61,13 @@ class db {
         $stmt = $this->conn->query($query);
         return $stmt->fetchAll();
     }
+    
+    function Get_level_By_Name($name) {
+        $query = "SELECT * FROM level where levelName=?";
+        $stmt = $this->conn->query($query);
+        $stmt->execute([$name]);
+        return $stmt->fetchAll();
+    }
 
     function Del_Level($id) {
         $query = "DELETE FROM `level` WHERE id = ?";

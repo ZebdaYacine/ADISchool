@@ -12,7 +12,7 @@ class level {
         $this->db = new db;
     }
 
-    function check_Validity_Data($data, $type) {
+    public function check_Validity_Data($data, $type) {
         if (empty($data)) {
             $this->error = " $data is empty";
             return false;
@@ -23,6 +23,11 @@ class level {
                     if (!is_numeric($data)) {
                         $this->error = " nomber of  sessions must be numeric";
                         return false;
+                    } else {
+                        if ($data < 0 || $data > 100) {
+                            $this->error = " incorrect value for nomber of sessions";
+                            return false;
+                        }
                     }
                 }
             case "STRING": {
@@ -54,7 +59,7 @@ class level {
             $id = intval($_POST['ID']);
             $this->db->Del_Level($id);
         }
-        go_back();
+        $this->go_back();
     }
 
     public function update_level() {
@@ -67,9 +72,13 @@ class level {
         $this->go_back();
     }
 
-    public function get_data_in_table() {
+    public function get_data_in_table($name) {
         $output = "";
-        $list = $this->db->Get_levels();
+        if (empty($name)) {
+            $list = $this->db->Get_levels();
+        } else {
+            $list = $this->db->Get_level_By_Name($name);
+        }
         foreach ($list as $level) {
             $id = $level['id'];
             $name = $level['levelName'];
@@ -101,8 +110,19 @@ class level {
 
 }
 
-if (IsAuth()) {
+function reload_page($value, $obj) {
+    if (empty($value)) {
+        echo json_encode(
+                array("error" => $obj->get_error(),
+                    "levels" => $obj->get_data_in_table("")));
+    } else {
+        echo json_encode(
+                array("error" => $obj->get_error(),
+                    "levels" => $obj->get_data_in_table($value)));
+    }
+}
 
+if (IsAuth()) {
     //foreach ($_POST as $key => $value) {
     $obj = new level();
     if (isset($_POST['action'])) {
@@ -112,9 +132,14 @@ if (IsAuth()) {
             $obj->update_level();
         } elseif ($_POST['action'] == 'add') {
             $obj->add_levele();
-            echo json_encode(
-                    array("error" => $obj->get_error(),
-                        "levels" => $obj->get_data_in_table()));
+            reload_page("", $obj);
+        } elseif ($_POST['action'] == 'search') {
+            if (isset($_POST['Lname'])) {
+                echo json_encode(
+                array("error" => $obj->get_error(),
+                    "levels" => $obj->get_data_in_table($_POST['Lname'])));
+
+            }
         }
     }
 }

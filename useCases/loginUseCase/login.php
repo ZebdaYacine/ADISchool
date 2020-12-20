@@ -1,9 +1,8 @@
-<?php 
+<?php
 session_start();
-if(isset($_SESSION['sess_user_id']) && $_SESSION['sess_user_id'] != "") {
-  header('location:../../index.php');
-  
-} 
+if (isset($_SESSION['sess_user_id']) && $_SESSION['sess_user_id'] != "") {
+    header('location:../../index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +11,7 @@ if(isset($_SESSION['sess_user_id']) && $_SESSION['sess_user_id'] != "") {
         <link rel="stylesheet" href="..\..\bootstrap-5.0.0-beta1-dist\css\bootstrap.min.css">
         <!-- Optional theme -->
         <link rel="stylesheet" href="..\..\bootstrap-5.0.0-beta1-dist\css\bootstrap-theme.min.css">
-        
+
         <!-- Latest compiled and minified JavaScript -->
         <script src="..\ADISchool\bootstrap-5.0.0-beta1-dist\js\bootstrap.min.js"></script>
         <link rel="stylesheet" href="..\..\css\login_style.css">
@@ -30,35 +29,35 @@ if(isset($_SESSION['sess_user_id']) && $_SESSION['sess_user_id'] != "") {
         <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
         <link href="../../fontawesome-free-5.15.1-web/css/all.css" rel="stylesheet" type="text/css">
     </head>
-   <body>
+    <body>
         <div class="container" id="testjust">
             <div class="row content">
                 <div class="col-md-6 mb-3">
-                        <img src="../../img/icon_login.png" alt="login-image" class="img-fluid">
+                    <img src="../../img/icon_login.png" alt="login-image" class="img-fluid">
                 </div>
                 <div class="col-md-6 mb-3">
-            <h3 class="signin-text mb-3"> Sign In</h3>
-            <form action="loginController.php" method="POST">
-                    <div class="form-group">
-                      <label for="user">User Name</label>
-                      <input type="text" name="user" class="form-control">
-                      <div class="form-group">
-                          <label for="password">Password</label>
-                          <input type="password" name="password" class="form-control">
-                      </div>
-                      <div class="form-group form-check">
-                          <input type="checkbox" name="checkbox" class="form-check-input" id="checkbox">
-                          <label class="form-check-label" for="checkbox">
-                              Remember Me
-                          </label>
+                    <h3 class="signin-text mb-3"> Sign In</h3>
+                    <form action="loginController.php" method="POST">
+                        <div class="form-group">
+                            <label for="user">User Name</label>
+                            <input type="text" name="user" class="form-control">
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" class="form-control">
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" name="checkbox" class="form-check-input" id="checkbox">
+                                <label class="form-check-label" for="checkbox">
+                                    Remember Me
+                                </label>
 
-                      </div>
-                       <button class="btn btn-class">Login</button>
-                    </div>
-            </form>
+                            </div>
+                            <button class="btn btn-class">Login</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-   
-   </body>
-   </html>
+
+    </body>
+</html>

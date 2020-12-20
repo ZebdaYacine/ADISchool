@@ -30,7 +30,10 @@ IsAuth();
                     <?php include_once $GlobalPath . "/modeles/topbar.php"; ?>
                     <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 ml-5 mr-5">
                         <h2 class="h2 my-0 me-md-auto fw-normal">Niveaxu</h2>
-                        <input type="text" class="mr-5 ml-5 mt-1 mb-1 form-control" placeholder="search">  
+                        <form  class="mr-5 ml-5 mt-1 mb-1" id="search_form" >
+                            <input type="text" id="Lname" name="Lname" class="form-control" placeholder="search"> 
+                            <input type="hidden" name="action" value="search">
+                        </form>
                         <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
                                 data-bs-target="#insertModale">ajouter</button>
                     </header>
@@ -96,6 +99,26 @@ IsAuth();
         ?>
 
         <script>
+            $(document).ready(function () {
+                $('#Lname').keyup(function (event) {
+                    $.ajax({
+                        url: "levelUseCase.php",
+                        method: "POST",
+                        dataType: 'json',
+                        cache: false,
+                        data: $('#search_form').serialize(),
+                        beforeSend: function () {
+                            $('#search').val('search..!!')
+                        },
+                        success: function (data) {
+                            $('#insert_form')[0].reset();
+                            $('#insertModale').modal('hide');
+                            $('#error').html(data.error);
+                            $('#leveles').html(data.levels);
+                        }
+                    });
+                });
+            });
             $(document).ready(function () {
                 $('#insert_form').on("submit", function (event) {
                     event.preventDefault();
