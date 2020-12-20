@@ -11,7 +11,7 @@ class db {
         $this->username = localArg::$user_name;
         $this->password = localArg::$password;
         $this->dbname = localArg::$db_name;
-    }
+   
 
         try {
             $this->conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
@@ -22,7 +22,7 @@ class db {
             // and if this fails there is no point continuing so add an exit
             exit;
         }
-
+ } 
     function Add_Fomation($f_name) {
         $query = "INSERT INTO `training`(`trainingName`) VALUES (?)";
         $stmt = $this->conn->prepare($query);
@@ -58,6 +58,36 @@ class db {
         $stmt = $this->conn->query($query);
         return $stmt->fetchAll();
     }
+
+
+
+    // database action of category 
+
+    function Add_Category($C_name) {
+        $query = "INSERT INTO `category`(`category`) VALUES (?)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$C_name]);
+    }
+
+    function Get_Category() {
+        $query = "SELECT * FROM `category` ORDER BY id";
+        $stmt = $this->conn->query($query);
+        return $stmt->fetchAll();
+    }
+
+    function Del_Category($id) {
+        $query = "DELETE FROM `category` WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$id]);
+    }
+
+    function Mod_Category($id, $C_name) {
+        $query = "UPDATE `category` SET `categoryName`=? WHERE `id`=?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$C_name, $id]);
+    }
+
+
 
 }
 

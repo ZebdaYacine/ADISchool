@@ -1,10 +1,9 @@
 <?php
 $GlobalPath = "../..";
 include_once $GlobalPath."/modeles/models.php";
-session_start();
-if (isset($_SESSION['sess_user_id']) && $_SESSION['sess_user_id'] == "") {
-    header('location:useCases/loginUseCase/login.php');
-}
+include_once $GlobalPath."/modeles/lib.php";
+IsAuth();
+
 //header('location:useCases\statisticsUseCase\statics.php');
 ?>
 <!DOCTYPE html>

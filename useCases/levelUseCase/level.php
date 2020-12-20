@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <?php
 //echo $_GET['opt'];
+$GlobalPath="../..";
+include_once $GlobalPath."/modeles/lib.php";
+IsAuth();
+
 ?>
 <html lang="en">
 
@@ -51,6 +55,7 @@
                     <label id="error" class="h4 d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 ml-5 mr-5 text-danger">
 
                     </label>
+                    
                     <div class="table-responsive mx-sm-0 mx-md-5 mx-lg-5 col-md-11 col-lg-11 col-sm-12">
                         <table class="table table-striped table-sm" >
                             <thead>
