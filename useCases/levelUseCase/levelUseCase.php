@@ -53,8 +53,8 @@ class level {
         if (isset($_POST['ID'])) {
             $id = intval($_POST['ID']);
             $this->db->Del_Level($id);
-            header("Location:level.php");
         }
+        go_back();
     }
 
     public function update_level() {
@@ -62,9 +62,9 @@ class level {
             $name = htmlspecialchars($_POST['L_name']);
             $nbr = htmlspecialchars($_POST['nbr_name']);
             $id = intval($_POST['ID']);
-            $this->db->Updat_Level($id, $name, $nbr);
-            header("Location:level.php");
+            $this->db->Modify_Level($id, $name, $nbr);
         }
+        $this->go_back();
     }
 
     public function get_data_in_table() {
@@ -94,22 +94,28 @@ class level {
         return $this->error;
     }
 
+    protected function go_back() {
+        $_POST['action'] = NULL;
+        header("Location:level.php");
+    }
+
 }
 
 if (IsAuth()) {
+
+    //foreach ($_POST as $key => $value) {
+    $obj = new level();
     if (isset($_POST['action'])) {
-        $obj = new level();
-        if ($_POST['action'] == 'add') {
+        if ($_POST['action'] == 'dell') {
+            $obj->dell_level();
+        } elseif ($_POST['action'] == 'modify') {
+            $obj->update_level();
+        } elseif ($_POST['action'] == 'add') {
             $obj->add_levele();
             echo json_encode(
                     array("error" => $obj->get_error(),
                         "levels" => $obj->get_data_in_table()));
-        } elseif (IsPrivileged($_POST['action'] == 'dell')) {
-            $obj->dell_level();
-        } elseif (IsPrivileged($_POST['action'] == 'modify')) {
-            $obj->update_level();
         }
     }
-
 }
 ?>

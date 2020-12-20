@@ -14,7 +14,7 @@ class db {
         $this->username = localArg::$user_name;
         $this->password = localArg::$password;
         $this->dbname = localArg::$db_name;
-        
+
         try {
             $this->conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             // set the PDO error mode to exception
@@ -49,30 +49,38 @@ class db {
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$F_name, $id]);
     }
-    
-     function Add_level($name,$nbr) {
+
+    function Add_level($name, $nbr) {
         $query = "INSERT INTO level (levelName,nbrSession) VALUES (?,?)";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$name, $nbr]);
     }
-    
+
     function Get_levels() {
         $query = "SELECT * FROM level ORDER BY id";
         $stmt = $this->conn->query($query);
         return $stmt->fetchAll();
     }
-    
+
     function Del_Level($id) {
         $query = "DELETE FROM `level` WHERE id = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$id]);
     }
-    
-    function Update_Level($id, $L_name,$nbr) {
+
+    function Modify_Level($id, $L_name, $nbr) {
         $query = "UPDATE `level` SET `levelName`=? ,nbrSession=? WHERE `id`=?";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute([$L_name,$nbr,$id]);
+        $stmt->execute([$L_name, $nbr, $id]);
     }
+
+    function Update_Level($id, $L_name, $nbr) {
+        echo "update db";
+//        $query = "UPDATE `level` SET `levelName`=? ,nbrSession=? WHERE `id`=?";
+//        $stmt = $this->conn->prepare($query);
+//        $stmt->execute([$L_name,$nbr,$id]);
+    }
+
 }
 
 //this is just for testing the db class make sure to remove them 

@@ -78,7 +78,7 @@ function ConfermDell_F() { ?>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
-                    <form action="formationController.php" method="POST">
+                    <form action="formationController.php" id="delete_form" method="POST">
                         <input type="hidden" name="action" value="dell">
                         <input type="hidden" name="ID" value="-1" id="IdFormation">
                         <button type="submit" class="btn btn-primary">Oui</button>
