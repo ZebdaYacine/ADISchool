@@ -37,7 +37,7 @@ IsAuth();
                         <h2 class="h2 my-0 me-md-auto fw-normal">Niveaxu</h2>
                         <input type="text" class="mr-5 ml-5 mt-1 mb-1 form-control" placeholder="search">  
                         <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
-                                data-bs-target="#insertModale">ajouter</button>
+                                data-bs-target="#AddCModal">ajouter</button>
                     </header>
 
                     <label id="error" class="h4 d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 ml-5 mr-5 text-danger">
@@ -94,13 +94,13 @@ IsAuth();
       
         <?php  
         logoutModal();
+        AddModale_C();
+
+        include_once $GlobalPath."/modeles/scripts.php";
         ?>
 
         <!-- Scripts  --> 
-        <?php include_once $GlobalPath."/modeles/scripts.php";
-
-         ?>
-
+        
     </body>
 
 </html>
