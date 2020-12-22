@@ -12,17 +12,17 @@ include_once $GlobalPath."/modeles/lib.php";
  class Category 
  {
 	protected $db; 	
- 	function __construct(argument)
+ 	function __construct()
  	{
  		$this->db = new db ; 
  	}
  
- 	public function AddCategory($C_name) {
-
+ 	public function AddCategory() {
+ 		
  		if (isset($_POST['CategoryName'])) {
  			Errortype(1,$_POST['CategoryName']);
- 			$cname = htmlspecialchars($_POST['CategoryName']))
- 			$this->db->Add_Category($cname));
+ 			$cname = htmlspecialchars($_POST['CategoryName']);
+ 			$this->db->Add_Category($cname);
  		}
 
  	}
@@ -35,7 +35,7 @@ if (IsAuth()) {
 		$CT = new Category() ; 
 
 		
-		if(IsPrivileged($_POST['action'] == 'add')) $CR->AddCategory() ; 
+		if(IsPrivileged($_POST['action'] == 'Add_C')) $CT->AddCategory() ; 
 		
 	} else header('location:../../index.php'); 
 

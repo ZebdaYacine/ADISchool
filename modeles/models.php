@@ -101,22 +101,22 @@
               </div>
               <div class="modal-body">
                 
-              <form action="formationController.php" method="POST" id='ModForm'>
+              <form action="formationController.php" method="POST" id='AdCat'>
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-5 col-form-label">Nom de La Category</label>
                         <div class="col-sm-7">
-                          <input type="text" class="form-control" name="F_name" id="ModFname">
+                          <input type="text" class="form-control" name="CategoryName" id="AddCname" msg="Nom de catégorie">
                         </div>
                       </div>
                     
                     <input type="hidden" name="ID" value="-1" id="ModId">
-                    <input type="hidden" name="action" value="modify">
+                    <input type="hidden" name="action" value="Add_C">
               </form>
 
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                <button type="submit" class="btn btn-primary" onclick="Submit_me('ModForm')">Ajouter</button>
+                <button type="submit" class="btn btn-primary" onclick="Send_PostRequest('AdCat','categoryController.php')" id="insert">Ajouter</button>
                 
               </div>
             </div>

@@ -64,7 +64,7 @@ class db {
     // database action of category 
 
     function Add_Category($C_name) {
-        $query = "INSERT INTO `category`(`category`) VALUES (?)";
+        $query = "INSERT INTO `category`(`categoryName`) VALUES (?)";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$C_name]);
     }
