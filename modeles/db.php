@@ -38,6 +38,12 @@ class db {
         return $stmt->fetchAll();
     }
 
+    function Get_Formations_Name() {
+        $query = "SELECT trainingName FROM `training` ORDER BY id";
+        $stmt = $this->conn->query($query);
+        return $stmt->fetchAll();
+    }
+
     function Del_Formation($id) {
         $query = "DELETE FROM `training` WHERE id = ?";
         $stmt = $this->conn->prepare($query);
@@ -61,12 +67,13 @@ class db {
         $stmt = $this->conn->query($query);
         return $stmt->fetchAll();
     }
-    
+
     function Get_level_By_Name($name) {
-        $query = "SELECT * FROM level where levelName=?";
+        $query = "SELECT * FROM level where `levelName` LIKE '?%'";
         $stmt = $this->conn->query($query);
         $stmt->execute([$name]);
-        return $stmt->fetchAll();
+        $levles = $stmt->fetchAll();
+        return $levles;
     }
 
     function Del_Level($id) {
@@ -88,10 +95,15 @@ class db {
 //        $stmt->execute([$L_name,$nbr,$id]);
     }
 
+    function Tets() {
+        return "TEST";
+    }
+
 }
 
 //this is just for testing the db class make sure to remove them 
 // $db = new db() ; 
-// $db->Add_Fomation("juset testing !!");
+// $list =$db->Get_level_By_Name("dfg");
+//echo $list;
 //comment me or delete me after you finish
 ?>

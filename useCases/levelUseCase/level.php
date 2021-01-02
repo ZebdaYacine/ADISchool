@@ -97,8 +97,8 @@ IsAuth();
         ModifyModal_L();
         logoutModal();
         ?>
-
         <script>
+            // serach level by name is not work 
             $(document).ready(function () {
                 $('#Lname').keyup(function (event) {
                     $.ajax({
@@ -119,6 +119,7 @@ IsAuth();
                     });
                 });
             });
+            // insert level 
             $(document).ready(function () {
                 $('#insert_form').on("submit", function (event) {
                     event.preventDefault();

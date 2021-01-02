@@ -1,4 +1,8 @@
-
+<?php
+include_once 'db.php';
+$db = new db();
+$list = $db->Get_Formation();
+?>
 
 <?php
 
@@ -109,6 +113,20 @@ function Add_Level() { ?>
                             <label for="exampleFormControlInput1" class="form-label">nombre de seances</label>
                             <input type="text" id="nbr" name="nbr" class="form-control">
                         </div>
+                        <div class="form-group">
+                            <label for="formation">formation</label>
+                            <select class="form-control" id="formation" name="formation">
+                                <?php
+                                $list = $GLOBALS['list'];
+                                $i = 0;
+                                echo "<option>select formation</option>";
+                                foreach ($list as $formation) {
+                                    echo "<option>'>>> $i" . $list['trainingName'] . "'</option>";
+                                    $i++;
+                                }
+                                ?>
+                            </select>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Annuler</button>
@@ -124,10 +142,7 @@ function Add_Level() { ?>
 
 
 <?php
-
 function ModifyModal_L() { ?>
-
-
     <div class="modal fade" id="ModForModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -167,7 +182,6 @@ function ModifyModal_L() { ?>
 <?php
 
 function ConfermDell_L() { ?>
-
     <div class="modal fade" id="ConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">

@@ -74,7 +74,7 @@ class level {
 
     public function get_data_in_table($name) {
         $output = "";
-        if (empty($name)) {
+        if ($name == "") {
             $list = $this->db->Get_levels();
         } else {
             $list = $this->db->Get_level_By_Name($name);
@@ -111,7 +111,7 @@ class level {
 }
 
 function reload_page($value, $obj) {
-    if (empty($value)) {
+    if ($value == "") {
         echo json_encode(
                 array("error" => $obj->get_error(),
                     "levels" => $obj->get_data_in_table("")));
@@ -123,8 +123,13 @@ function reload_page($value, $obj) {
 }
 
 if (IsAuth()) {
-    //foreach ($_POST as $key => $value) {
     $obj = new level();
+    if (isset($_POST['Lname'])) {
+        echo $_POST['Lname'];
+        if ($_POST['Lname'] != "") {
+            reload_page($_POST['Lname'], $obj);
+        };
+    }
     if (isset($_POST['action'])) {
         if ($_POST['action'] == 'dell') {
             $obj->dell_level();
@@ -133,12 +138,12 @@ if (IsAuth()) {
         } elseif ($_POST['action'] == 'add') {
             $obj->add_levele();
             reload_page("", $obj);
-        } elseif ($_POST['action'] == 'search') {
-            if (isset($_POST['Lname'])) {
-                echo json_encode(
-                array("error" => $obj->get_error(),
-                    "levels" => $obj->get_data_in_table($_POST['Lname'])));
-
+        } elseif ($_GET['action'] == 'search') {
+            if (isset($_GET['Lname'])) {
+                echo $_GET['Lname'];
+                if ($_GET['Lname'] != "") {
+                    reload_page($_GET['Lname'], $obj);
+                }
             }
         }
     }
