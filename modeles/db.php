@@ -1,6 +1,6 @@
 <?php
 
-include_once '../../config/localArg.php';
+include_once '..\..\config\localArg.php';
 
 class db {
 
@@ -36,6 +36,7 @@ class db {
         $query = "SELECT * FROM `training` ORDER BY id";
         $stmt = $this->conn->query($query);
         return $stmt->fetchAll();
+//        return "test";
     }
 
     function Get_Formations_Name() {

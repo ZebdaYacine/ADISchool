@@ -1,7 +1,5 @@
 <?php
 include_once 'db.php';
-$db = new db();
-$list = $db->Get_Formation();
 ?>
 
 <?php
@@ -117,14 +115,13 @@ function Add_Level() { ?>
                             <label for="formation">formation</label>
                             <select class="form-control" id="formation" name="formation">
                                 <?php
-                                $list = $GLOBALS['list'];
-                                $i = 0;
+                                $db = new db();
+                                $list = $db->Get_Formation();
                                 echo "<option>select formation</option>";
                                 foreach ($list as $formation) {
-                                    echo "<option>'>>> $i" . $list['trainingName'] . "'</option>";
-                                    $i++;
-                                }
-                                ?>
+                                        echo "<option>".$formation['trainingName'] ."</option>";
+                                    }
+                                    ?>
                             </select>
                         </div>
                     </div>
@@ -142,6 +139,7 @@ function Add_Level() { ?>
 
 
 <?php
+
 function ModifyModal_L() { ?>
     <div class="modal fade" id="ModForModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
