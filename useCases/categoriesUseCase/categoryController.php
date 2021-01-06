@@ -27,6 +27,14 @@ include_once $GlobalPath."/modeles/lib.php";
 
  	}
 
+ 	public function GetCategory() { 
+
+ 		$Category = json_encode($this->db->Get_Category()); 
+ 		$data = ["error"=>false,"data"=>$Category];
+ 		$data = json_encode($data);
+ 		echo $data ; 
+ 	}
+
  } 
 
 if (IsAuth()) {
@@ -36,8 +44,8 @@ if (IsAuth()) {
 
 		
 		if(IsPrivileged($_POST['action'] == 'Add_C')) $CT->AddCategory() ; 
-		
-	} else header('location:../../index.php'); 
+		elseif(IsPrivileged($_POST['action'] == 'Get_C')) $CT->GetCategory(); 
+	} 
 
 
 }

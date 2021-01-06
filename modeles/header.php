@@ -22,4 +22,5 @@
         <link href="<?php echo $GlobalPath ?>/css/sb-admin-2.min.css" rel="stylesheet">
         <link href="<?php echo $GlobalPath ?>/fontawesome-free-5.15.1-web/css/all.css" rel="stylesheet" type="text/css">
         <link href="<?php echo $GlobalPath ?>/css/main.css" rel="stylesheet">
+       
     </head>

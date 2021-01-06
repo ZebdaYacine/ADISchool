@@ -46,11 +46,36 @@ function Send_PostRequest(id,URL) {
                                 $('#insert').val("Ajoute...");
                             },
                             success: function (data) {
-                                alert(data);
+                                // alert(data);
                                 Modal.modal('hide');
                             }
                         });
 
 
 	}
+}
+
+function Create_table(id,data) {
+	var json_data = JSON.parse(data);
+	alert(json_data.data);
+}
+
+
+function Prepare_table(id,URL) {
+
+$.ajax({
+                            url: URL,
+                            method: "POST",
+                            cache: false,
+                            data: "action=Get_C",
+                            beforeSend: function () {
+                                $('#insert').val("Ajoute...");
+                            },
+                            success: function (data) {
+                                Create_table(id,data);
+                                // Modal.modal('hide');
+                            }
+                        });
+
+
 }
