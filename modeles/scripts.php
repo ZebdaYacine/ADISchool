@@ -1,6 +1,5 @@
 
 
-         <script src="<?php echo $GlobalPath ?>/js/main.js"></script>
 <!-- Bootstrap core JavaScript-->
         <script src="<?php echo $GlobalPath ?>/vendor/jquery/jquery.min.js"></script>
         <script src="<?php echo $GlobalPath ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -19,4 +18,5 @@
         <script src="<?php echo $GlobalPath ?>/js/demo/chart-pie-demo.js"></script>
 
         <!-- Main js -->
+         <script src="<?php echo $GlobalPath ?>/js/main.js"></script>
         

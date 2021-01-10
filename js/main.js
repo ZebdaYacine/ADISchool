@@ -57,10 +57,28 @@ function Send_PostRequest(id,URL) {
 
 function Create_table(id,data) {
 	var json_data = JSON.parse(data);
-	alert(json_data.data);
+	json_data2 = JSON.parse(json_data.data);
+	var table = $('#'+id);
+	var leng_th = json_data2.length;
+	var Tag_table = "" ; 
+	alert("test");
+	for (var i = 0; i < leng_th ; i++) {
+		
+		Tag_table = "" ; 
+		Tag_table += "<tr><td>"+json_data2[i].id+"</td>";  
+		Tag_table += "<td>"+json_data2[i].categoryName+"</td>";
+		Tag_table += '<td><a href="levelUseCase.php?id=1&amp;action=update">update</a></td>';
+		Tag_table += '<td><a href="levelUseCase.php?id=1&amp;action=delete">delete</a></td>'; 
+		Tag_table += "</tr>"
+		table.append(Tag_table);
+	}
 }
 
-
+/*<td>1</td>
+                        <td>test </td>
+                        <td>20</td>
+                        <td><a href="levelUseCase.php?id=1&amp;action=update">update</a></td>
+                        <td><a href="levelUseCase.php?id=1&amp;action=delete">delete</a></td> */ 
 function Prepare_table(id,URL) {
 
 $.ajax({
@@ -79,3 +97,5 @@ $.ajax({
 
 
 }
+
+Prepare_table('leveles','categoryController.php');

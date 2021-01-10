@@ -46,7 +46,7 @@ IsAuth();
                    
                     
                     <div class="table-responsive mx-sm-0 mx-md-5 mx-lg-5 col-md-11 col-lg-11 col-sm-12" onload="Prepare_table('id','categoryController.php')">
-                        <table class="table table-striped table-sm">
+                        <table class="table table-striped table-sm" id="tableCat">
                             <thead>
                                 <tr>
                                     <th>id</th>
