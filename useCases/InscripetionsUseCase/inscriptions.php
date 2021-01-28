@@ -29,7 +29,7 @@ IsAuth();
                 <div id="content">
                     <?php include_once $GlobalPath . "/modeles/topbar.php"; ?>
                     <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 ml-5 mr-5">
-                        <h2 class="h2 my-0 me-md-auto fw-normal">Niveaxu</h2>
+                        <h2 class="h2 my-0 me-md-auto fw-normal">Inscriptions</h2>
                         <form  class="mr-5 ml-5 mt-1 mb-1" id="search_form" >
                             <input type="text" id="Lname" name="Lname" class="form-control" placeholder="search"> 
                             <input type="hidden" name="action" value="search">
@@ -45,9 +45,13 @@ IsAuth();
                             <thead>
                                 <tr>
                                     <th>id</th>
-                                    <th>Niveau</th>
-                                    <th>seances</th>
-                                    <th>options</th>
+                                    <th>etudiant</th>
+                                    <th>formation</th>
+                                    <th>catégorie</th>
+                                    <th>niveau</th>
+                                    <th>prix</th>
+                                    <th>date</th>
+                                    <th>option</th>
                                 </tr>
                             </thead>
                             <tbody id="leveles">
@@ -61,6 +65,10 @@ IsAuth();
                                     echo "<tr>
                                         <td>" . $level['id'] . "</td>
                                         <td>" . $level['levelName'] . " </td>
+                                        <td>" . $level['nbrSession'] . "</td>
+                                        <td>" . $level['levelName'] . " </td>
+                                        <td>" . $level['levelName'] . " </td>
+                                        <td>" . $level['nbrSession'] . "</td>
                                         <td>" . $level['nbrSession'] . "</td>
                                         <td>
                                             <a href='' id = 'btn_table' data-toggle = 'modal' data-target = '#ConfirmModal' onclick = 'Prepare_Del(\"$id\",\"$name\")'>
@@ -90,7 +98,7 @@ IsAuth();
 
         <?php
         include_once $GlobalPath . "/modeles/scripts.php";
-        Add_Level();
+        Add_Inscri();
         ConfermDell_L();
         ModifyModal_L();
         logoutModal();

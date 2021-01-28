@@ -57,7 +57,7 @@
 
                 <!-- Nav Item - Utilities Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="<?php echo $GlobalPath ?>/useCases/inscriptionsUseCase/inscriptions.php" >
+                    <a class="nav-link collapsed" href="<?php echo $GlobalPath ?>/useCases/InscripetionsUseCase/inscriptions.php" >
                         <i class="fas fa-book"></i>
                         <span>Inscriptions</span>
                     </a>

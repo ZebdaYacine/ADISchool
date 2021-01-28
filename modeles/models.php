@@ -204,3 +204,82 @@ function ConfermDell_L() { ?>
         </div>
     </div>
 <?php } ?>
+
+<?php  function Add_Inscri() { ?>
+    <div class="modal fade" id="insertModale" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form method="post" id="insert_form" action="levelUseCase.php">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">neveau inscriptions</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="etudiant">etudiant</label>
+                            <select class="form-control" id="etudiant" name="etudiant">
+                                <?php
+                                $db = new db();
+                                $list = $db->Get_student_Name();
+                                echo "<option>select etudiant</option>";
+                                foreach ($list as $student) {
+                                        echo "<option>".$student['firstName']." ".$student['lastName']."</option>";
+                                    }
+                                    ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="formation">formation</label>
+                            <select class="form-control" id="formation" name="formation">
+                                <?php
+                                $db = new db();
+                                $list = $db->Get_Formation();
+                                echo "<option>select formation</option>";
+                                foreach ($list as $formation) {
+                                        echo "<option>".$formation['trainingName'] ."</option>";
+                                    }
+                                    ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="formation">niveau</label>
+                            <select class="form-control" id="niveau" name="niveau">
+                                <?php
+                                $db = new db();
+                                $list = $db->Get_level_Name();
+                                echo "<option>select niveau</option>";
+                                foreach ($list as $level) {
+                                        echo "<option>".$level['levelName'] ."</option>";
+                                    }
+                                    ?>
+                            </select>
+                        </div>
+                         <div class="form-group">
+                            <label for="catégorie">catégorie</label>
+                            <select class="form-control" id="catégorie" name="catégorie">
+                                <?php
+                                $db = new db();
+                                $list = $db->Get_category_Name();
+                                echo "<option>select catégorie</option>";
+                                foreach ($list as $category) {
+                                        echo "<option>".$category['categoryName'] ."</option>";
+                                    }
+                                    ?>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">prix</label>
+                            <input type="text" id="price" name="price" class="form-control">
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Annuler</button>
+                        <input type="submit"  class="btn btn-outline-success" onclick="Submit_me" id="insert" name="insert"  value="Ajouter"/>
+                    </div>
+                    <input type="hidden" name="action" value="add">
+                </div>
+            </div>
+        </form>
+    </div>
+<?php } ?>

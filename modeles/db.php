@@ -76,6 +76,12 @@ class db {
         $levles = $stmt->fetchAll();
         return $levles;
     }
+    
+    function Get_level_Name() {
+        $query = "SELECT levelName FROM `level` ORDER BY id";
+        $stmt = $this->conn->query($query);
+        return $stmt->fetchAll();
+    }
 
     function Del_Level($id) {
         $query = "DELETE FROM `level` WHERE id = ?";
@@ -94,6 +100,18 @@ class db {
 //        $query = "UPDATE `level` SET `levelName`=? ,nbrSession=? WHERE `id`=?";
 //        $stmt = $this->conn->prepare($query);
 //        $stmt->execute([$L_name,$nbr,$id]);
+    }
+    
+    function Get_student_Name() {
+        $query = "SELECT firstName , lastName FROM `student` ORDER BY id";
+        $stmt = $this->conn->query($query);
+        return $stmt->fetchAll();
+    }
+    
+    function Get_category_Name() {
+        $query = "SELECT categoryName FROM `category` ORDER BY id";
+        $stmt = $this->conn->query($query);
+        return $stmt->fetchAll();
     }
 
     function Tets() {
