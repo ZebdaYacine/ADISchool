@@ -8,7 +8,7 @@ function Prepare_Modify(id, f_name) {
     $('#ModId').val(id);
 }
 
-function Prepare_Modify_Level(id, l_name,nbr) {
+function Prepare_Modify_Level(id, l_name, nbr) {
     $('#ModLname').val(l_name);
     $('#Modnbr').val(nbr);
     $('#ModId').val(id);
@@ -17,3 +17,11 @@ function Prepare_Modify_Level(id, l_name,nbr) {
 function Submit_me(id) {
     $("#" + id).submit();
 }
+
+function show_StudnetModel() {
+    $("#Modal").modal('show');
+    $("#insertModale").modal('hide');
+}
+
+
+
