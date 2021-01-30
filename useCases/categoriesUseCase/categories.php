@@ -57,18 +57,9 @@ IsAuth();
                                 </tr>
                             </thead>
                             <tbody id="leveles"><tr>
-                        <td>1</td>
-                        <td>test </td>
-                        <td>20</td>
-                        <td><a href="levelUseCase.php?id=1&amp;action=update">update</a></td>
-                        <td><a href="levelUseCase.php?id=1&amp;action=delete">delete</a></td>
-                    </tr><tr>
-                        <td>4</td>
-                        <td>testt </td>
-                        <td>6</td>
-                        <td><a href="levelUseCase.php?id=4&amp;action=update">update</a></td>
-                        <td><a href="levelUseCase.php?id=4&amp;action=delete">delete</a></td>
-                    </tr></tbody>
+                        
+                        
+                        </tbody>
                         </table>
                     </div>
 
