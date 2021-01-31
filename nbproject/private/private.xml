@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Apache24/htdocs/ADISchool/useCases/inscriptionsUseCase/inscriptionsUseCase.php</file>
-            <file>file:/C:/Apache24/htdocs/ADISchool/useCases/inscriptionsUseCase/inscriptions.php</file>
+            <file>file:/C:/Apache24/htdocs/ADISchool/useCases/InscripetionsUseCase/inscriptions.php</file>
+            <file>file:/C:/Apache24/htdocs/ADISchool/useCases/InscripetionsUseCase/inscriptionsUseCase.php</file>
+            <file>file:/C:/Apache24/htdocs/ADISchool/useCases/InscripetionsUseCase/codeGenerator.php</file>
+            <file>file:/C:/Apache24/htdocs/ADISchool/js/main.js</file>
             <file>file:/C:/Apache24/htdocs/ADISchool/modeles/models.php</file>
         </group>
     </open-files>

@@ -19,8 +19,26 @@ function Submit_me(id) {
 }
 
 function show_StudnetModel() {
-    $("#Modal").modal('show');
     $("#insertModale").modal('hide');
+    $("#sss").modal('show');
+}
+
+function show_inscri() {
+    $("#sss").modal('hide');
+    $("#insertModale").modal('show');
+}
+
+function generate() {
+    $.ajax({
+        url: "codeGenerator.php",
+        type: 'GET',
+        dataType: 'html',
+        beforeSend: function () {
+        },
+        success: function (data) {
+            $('#code').val(data);   
+        }
+    });
 }
 
 

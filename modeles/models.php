@@ -209,11 +209,11 @@ function ConfermDell_L() { ?>
 
 function Add_Inscri() { ?>
     <div class="modal fade" id="insertModale" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <form method="post" id="insert_form" action="levelUseCase.php">
+        <form method="post" id="insert_form" action="inscriptionsUseCase.php">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">neveau inscriptions</h5>
+                        <h5 class="modal-title">neveau inscriptions</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
                     </div>
                     <div class="modal-body">
@@ -293,24 +293,57 @@ function Add_Inscri() { ?>
 <?php
 
 function sss() { ?>
-    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+    <div id="sss" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Confirmer La Suppression</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" onclick="show_inscri()" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    êtes-vous sûr de vouloir supprimer la formation <span id="FormationVal" class="text-danger"></span>               
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
-                    <form action="formationController.php" method="POST">
-                        <input type="hidden" name="action" value="dell">
-                        <input type="hidden" name="ID" value="-1" id="IdFormation">
-                        <button type="submit" class="btn btn-primary">Oui</button>
+                    <form method="post" id="insert_std" action="../studentUseCase/studentUseCase.php">
+                        <div class="form-group">
+                            <label for="etudiant">Nom</label>
+                            <div class="col-12">
+                                <input type="text" class="form-control"  name="Fname" id="Fname">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="prenom">Prenom</label>
+                            <div class="col-12">
+                                <input type="text" class="form-control" name="Lname1" id="Lname1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <div class="col-12">
+                                <input type="text" class="form-control" name="phone" id="phone">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" id="email" name="email" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="exampleFormControlInput1" class="form-label">Code</label>
+                                </div>
+                                <div class="col">
+                                    <label for="exampleFormControlInput1"  style="cursor: pointer" class="form-label text-primary" onclick="generate()">
+                                        <u>Cree un code<u>
+                                    </label>
+                                </div>
+                            </div>
+                            <input type="text" id="code" name="code" class="form-control"  readonly>
+                        </div>
+                        <input type="hidden" name="action" value="add">
+                        <div class="modal-footer">
+                            <input type="submit"  class="btn btn-primary" onclick="Submit_me" id="insertStd" name="insertStd"  value="Ajouter"/>
+                            <button type="button" class="btn btn-secondary" onclick="show_inscri()" data-dismiss="modal">Close</button>
+                        </div>
                     </form>
                 </div>
             </div>

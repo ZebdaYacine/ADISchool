@@ -102,59 +102,89 @@ IsAuth();
         ConfermDell_L();
         ModifyModal_L();
         logoutModal();
+        sss();
         ?>
         <script>
-            // serach level by name is not work 
             $(document).ready(function () {
-                $('#Lname').keyup(function (event) {
-                    $.ajax({
-                        url: "levelUseCase.php",
-                        method: "POST",
-                        dataType: 'json',
-                        cache: false,
-                        data: $('#search_form').serialize(),
-                        beforeSend: function () {
-                            $('#search').val('search..!!')
-                        },
-                        success: function (data) {
-                            $('#insert_form')[0].reset();
-                            $('#insertModale').modal('hide');
-                            $('#error').html(data.error);
-                            $('#leveles').html(data.levels);
-                        }
-                    });
-                });
-            });
-            // insert level 
-            $(document).ready(function () {
-                $('#insert_form').on("submit", function (event) {
+                $('#insert_std').on("submit", function (event) {
                     event.preventDefault();
-                    if ($('#name').val() == "")
-                    {
-                        alert("nom de  niveau est recommandées");
-                    } else
-                    if ($('#nbr').val() == "")
-                    {
-                        alert("nomber de seances  est recommandées ");
-                    } else
-                    {
+                    if ($('#Fname').val() == "") {
+                        alert("le nom de l'etudient est recommandées");
+                    } else if ($('#Lname1').val() == "") {
+                        alert("le prenom de l'etudient  est recommandées ");
+                    } else if ($('#phone').val() == "") {
+                        alert("le numero de telphone  est recommandées ");
+                    } else if ($('#email').val() == "") {
+                        alert("l'email   est recommandées ");
+                    } else {
                         $.ajax({
-                            url: "levelUseCase.php",
+                            url: "../studentUseCase/studentUseCase.php",
                             method: "POST",
                             dataType: 'json',
                             cache: false,
-                            data: $('#insert_form').serialize(),
+                            data: $('#insert_std').serialize(),
                             beforeSend: function () {
+                                document.getElementById("insertStd").value = "Ajoute...";
                                 $('#insert').val("Ajoute...");
                             },
                             success: function (data) {
-                                $('#insert_form')[0].reset();
-                                $('#insertModale').modal('hide');
-                                $('#error').html(data.error);
-                                $('#leveles').html(data.levels);
+                                //$('#leveles').html(data.levels);
+                                if (data.error === "") {
+                                    setTimeout(() => {
+                                        $('#insert_std')[0].reset();
+                                        document.getElementById("insertStd").value = "Ajoute";
+                                        $('#sss').modal('hide');
+                                    }, 2000);
+                                } else {
+                                    //$('#error').html(data.error);
+                                }
+                            },
+                            error: function (xhr, status, error) {
+                                var errorMessage = xhr.status + ': ' + xhr.statusText
+                                alert('Error - ' + errorMessage);
                             }
                         });
                     }
+                });
+                $('#insert_form').on("submit", function (event) {
+                    event.preventDefault();
+//                    if ($('#Fname').val() == "") {
+//                        alert("le nom de l'etudient est recommandées");
+//                    } else if ($('#Lname1').val() == "") {
+//                        alert("le prenom de l'etudient  est recommandées ");
+//                    } else if ($('#phone').val() == "") {
+//                        alert("le numero de telphone  est recommandées ");
+//                    } else if ($('#email').val() == "") {
+//                        alert("l'email   est recommandées ");
+//                    } else {
+                    $.ajax({
+                        url: "inscriptionsUseCase.php",
+                        method: "POST",
+                        dataType: 'json',
+                        cache: false,
+                        data: $('#insert_form').serialize(),
+                        beforeSend: function () {
+                            document.getElementById("insert").value = "Ajoute...";
+                            $('#insert').val("Ajoute...");
+                        },
+                        success: function (data) {
+                            //$('#leveles').html(data.levels);
+                            if (data.error === "") {
+                                setTimeout(() => {
+                                    $('#insert_form')[0].reset();
+                                    document.getElementById("insert").value = "Ajoute";
+                                    $('#insertModale').modal('hide');
+                                }, 2000);
+                            } else {
+                                //$('#error').html(data.error);
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            var errorMessage = xhr.status + ': ' + xhr.statusText
+                            alert('Error - ' + errorMessage);
+                        }
+                    });
+                    //}
                 });
             });
         </script>

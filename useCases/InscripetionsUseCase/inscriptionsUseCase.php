@@ -3,7 +3,7 @@
 include '../../modeles/db.php';
 include '../../modeles/lib.php';
 
-class level {
+class inscriptions {
 
     protected $db;
     private $error;
@@ -123,29 +123,22 @@ function reload_page($value, $obj) {
 }
 
 if (IsAuth()) {
-    $obj = new level();
-    if (isset($_POST['Lname'])) {
-        echo $_POST['Lname'];
-        if ($_POST['Lname'] != "") {
-            reload_page($_POST['Lname'], $obj);
-        };
-    }
+    $obj = new inscriptions();
+    
     if (isset($_POST['action'])) {
         if ($_POST['action'] == 'dell') {
-            $obj->dell_level();
+            //$obj->dell_level();
         } elseif ($_POST['action'] == 'modify') {
-            $obj->update_level();
+            //$obj->update_level();
         } elseif ($_POST['action'] == 'add') {
-            $obj->add_levele();
-            reload_page("", $obj);
-        } elseif ($_GET['action'] == 'search') {
-            if (isset($_GET['Lname'])) {
-                echo $_GET['Lname'];
-                if ($_GET['Lname'] != "") {
-                    reload_page($_GET['Lname'], $obj);
-                }
-            }
-        }
+            ///echo "Hi I am here";
+            //$obj->add_levele();
+            //reload_page("", $obj);
+        } 
     }
+    
+    echo json_encode(
+                array("error" => "",
+                    "levels" => ""));
 }
 ?>
