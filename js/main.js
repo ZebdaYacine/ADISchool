@@ -48,6 +48,7 @@ function Send_PostRequest(id,URL) {
                             success: function (data) {
                                 // alert(data);
                                 Modal.modal('hide');
+                                Create_table('leveles',data);
                             }
                         });
 
@@ -61,27 +62,25 @@ function Create_table(id,data) {
 	var table = $('#'+id);
 	var leng_th = json_data2.length;
 	var Tag_table = "" ; 
-	
+	var j = 1;  
 	for (var i = 0; i < leng_th ; i++) {
 		
 		Tag_table = "" ; 
-		Tag_table += "<tr><td>"+json_data2[i].id+"</td>";  
+		Tag_table += "<tr><td>"+j+"</td>";  
 		Tag_table += "<td>"+json_data2[i].categoryName+"</td>";
 		Tag_table += "<td>0</td>";
-		Tag_table += '<td><a href="levelUseCase.php?id=1&amp;action=update">update</a></td>';
-		Tag_table += '<td><a href="levelUseCase.php?id=1&amp;action=delete">delete</a></td>'; 
-		Tag_table += "</tr>"
+		Tag_table += "<td><a href='#'><i title='delete' class='fas fa-trash-alt' onclick=Dell_C("+json_data2[i].id+",'categoryController.php')></i></a></td>";
+		Tag_table += "<td><a href='#'><i title='edit' class='fas fa-edit' onclick=alert(1)></i></a></td>"; 
+		Tag_table += "</tr>";
+
 		table.append(Tag_table);
+		j++; 
 	}
 }
 
-/*<td>1</td>
-                        <td>test </td>
-                        <td>20</td>
-                        <td><a href="levelUseCase.php?id=1&amp;action=update">update</a></td>
-                        <td><a href="levelUseCase.php?id=1&amp;action=delete">delete</a></td> */ 
-function Prepare_table(id,URL) {
 
+function Prepare_table(id,URL) {
+Modal = $("#AddCModal");
 $.ajax({
                             url: URL,
                             method: "POST",
@@ -92,11 +91,34 @@ $.ajax({
                             },
                             success: function (data) {
                                 Create_table(id,data);
-                                // Modal.modal('hide');
+                                Modal.modal('hide');
+                            }
+                        });
+
+
+}
+function Dell_C(id,URL) {
+
+$.ajax({
+                            url: URL,
+                            method: "POST",
+                            cache: false,
+                            data: "action=Dell_C&ID="+id,
+                            beforeSend: function () {
+                                $('#insert').val("Deleting...");
+                            },
+                            success: function (data) {
+                               data = JSON.parse(data)
+                               if (data.data) {
+                               	
+                               	$('#Tcategory').empty(); 
+                               	Prepare_table('Tcategory',URL);
+                               }
                             }
                         });
 
 
 }
 
-Prepare_table('leveles','categoryController.php');
+
+Prepare_table('Tcategory','categoryController.php');

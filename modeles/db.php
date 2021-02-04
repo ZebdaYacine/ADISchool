@@ -87,7 +87,11 @@ class db {
         $stmt->execute([$C_name, $id]);
     }
 
-
+    function Get_lastCategory() {
+        $query = "SELECT * FROM `category` ORDER BY `id` DESC LIMIT 1";
+        $stmt = $this->conn->query($query);
+        return $stmt->fetchAll();
+    } 
 
 }
 

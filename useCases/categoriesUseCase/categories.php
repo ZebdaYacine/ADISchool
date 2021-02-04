@@ -56,7 +56,7 @@ IsAuth();
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody id="leveles"><tr>
+                            <tbody id="Tcategory"><tr>
                         
                         
                         </tbody>

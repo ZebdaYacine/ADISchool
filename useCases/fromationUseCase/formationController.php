@@ -57,7 +57,7 @@ if (IsAuth()) {
 		$FM = new formation() ; 
 
 		
-		if(IsPrivileged($_POST['action'] == 'add')) $FM->addformation() ; 
+		if(IsPrivileged($_POST['action']) == 'add') $FM->addformation() ; 
 		elseif(IsPrivileged($_POST['action']) == 'dell') $FM->dellformation() ; 
 		elseif(IsPrivileged($_POST['action']) == 'modify' ) $FM->modformation();
 		
